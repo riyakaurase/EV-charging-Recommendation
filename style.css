@@ -1,0 +1,180 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#eef3f8;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    min-height:100vh;
+    padding:30px;
+}
+
+.container{
+    width:900px;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 0 20px rgba(0,0,0,0.2);
+}
+
+h1{
+    text-align:center;
+    color:#0066cc;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#666;
+    margin-bottom:25px;
+}
+
+label{
+    display:block;
+    margin-top:15px;
+    margin-bottom:5px;
+    font-weight:bold;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:16px;
+}
+
+input:focus{
+    outline:none;
+    border:2px solid #0066cc;
+}
+
+button{
+    width:100%;
+    margin-top:25px;
+    padding:15px;
+    border:none;
+    background:#0066cc;
+    color:white;
+    font-size:18px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#004d99;
+}
+
+#result{
+    margin-top:30px;
+    padding:20px;
+    background:#f8fbff;
+    border-radius:10px;
+    border-left:5px solid #0066cc;
+    font-size:18px;
+    line-height:1.8;
+}
+
+#map{
+    width:100%;
+    height:500px;
+    margin-top:25px;
+    border-radius:10px;
+    border:2px solid #0066cc;
+}
+
+
+/* ============================= */
+/* HOME PAGE TWO OPTIONS */
+/* ============================= */
+
+.options {
+    display: flex;
+    gap: 25px;
+    margin: 30px auto;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.option-card {
+    background: white;
+    padding: 25px;
+    border-radius: 18px;
+    width: 42%;
+    min-width: 280px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.option-card h2 {
+    margin-bottom: 12px;
+}
+
+.option-card p {
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.option-card button {
+    padding: 12px 22px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.option-card button:hover {
+    transform: scale(1.03);
+}
+
+
+/* ============================= */
+/* MAP */
+/* ============================= */
+
+#map {
+    height: 500px;
+    width: 100%;
+    margin-top: 25px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+
+/* ============================= */
+/* NEARBY RESULTS */
+/* ============================= */
+
+#nearbyResults {
+    margin-top: 20px;
+}
+
+.nearby-card {
+    background: white;
+    padding: 18px;
+    margin: 12px 0;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+}
+
+.nearby-card h3 {
+    margin-top: 0;
+}
+
+.nearby-card p {
+    margin: 6px 0;
+}
+
+.nearby-card button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+}

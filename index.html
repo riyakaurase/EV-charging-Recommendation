@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AI-Based EV Charging Recommendation System</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Leaflet Map CSS -->
+    <link rel="stylesheet"
+          href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>⚡ AI-Based EV Charging Recommendation System</h1>
+
+    <p class="subtitle">
+        Find the Best EV Charging Station Across Maharashtra
+    </p>
+
+
+    <!-- TWO OPTIONS -->
+
+    <div class="options">
+
+        <!-- Journey Option -->
+        <div class="option-card">
+
+            <h2>🛣️ Stations on My Journey</h2>
+
+            <p>
+                Find charging stations along your selected route.
+            </p>
+
+            <button onclick="showJourneyForm()">
+                🛣️ Plan My Journey
+            </button>
+
+        </div>
+
+
+        <!-- Nearby Option -->
+        <div class="option-card">
+
+            <h2>📍 Nearby Charging Stations</h2>
+
+            <p>
+                Find EV charging stations near your current location.
+            </p>
+
+            <button onclick="findNearbyStations()">
+                📍 Find Nearby Stations
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- JOURNEY FORM -->
+
+    <div class="form" id="journeyForm">
+
+        <h2>🛣️ Journey Details</h2>
+
+        <label>From City</label>
+
+        <input
+            type="text"
+            id="from"
+            placeholder="Enter Source City (Example: Pune)"
+        >
+
+
+        <label>To City</label>
+
+        <input
+            type="text"
+            id="to"
+            placeholder="Enter Destination City (Example: Solapur)"
+        >
+
+
+        <label>Current Battery (%)</label>
+
+        <input
+            type="number"
+            id="battery"
+            placeholder="Example: 60"
+            min="1"
+            max="100"
+        >
+
+
+        <label>Vehicle Range (KM)</label>
+
+        <input
+            type="number"
+            id="range"
+            placeholder="Example: 350"
+        >
+
+
+        <button onclick="findRoute()">
+            🔍 Find Best Charging Station
+        </button>
+
+    </div>
+
+
+    <!-- Recommendation Result -->
+
+    <div id="result"></div>
+
+
+    <!-- Nearby Station Results -->
+
+    <div id="nearbyResults"></div>
+
+
+    <!-- Map -->
+
+    <div id="map"></div>
+
+</div>
+
+
+<!-- Papa Parse -->
+
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+
+<!-- Your JavaScript -->
+
+<script src="script.js"></script>
+
+</body>
+</html>

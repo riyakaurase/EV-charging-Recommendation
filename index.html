@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <meta charset="UTF-8">
@@ -7,138 +8,801 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>AI-Based EV Charging Recommendation System</title>
+    <title>EV CHARGE AI | Smart EV Charging Recommendation</title>
 
-    <!-- CSS -->
+    <!-- Main CSS -->
     <link rel="stylesheet" href="style.css">
 
     <!-- Leaflet Map CSS -->
     <link rel="stylesheet"
-          href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+          href="https://unpkg.com/leaflet/dist/leaflet.css">
 
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
 </head>
 
+
 <body>
 
-<div class="container">
+<!-- ========================================= -->
+<!-- NAVBAR -->
+<!-- ========================================= -->
 
-    <h1>⚡ AI-Based EV Charging Recommendation System</h1>
+<nav class="navbar">
 
-    <p class="subtitle">
-        Find the Best EV Charging Station Across Maharashtra
-    </p>
+    <div class="logo">
+        ⚡ <span>EV CHARGE AI</span>
+    </div>
+
+    <div class="nav-links">
+
+        <button onclick="showPage('homePage')">
+            Home
+        </button>
+
+        <button onclick="showPage('journeyPage')">
+            Plan Journey
+        </button>
+
+        <button onclick="showPage('nearbyPage')">
+            Nearby Stations
+        </button>
+
+        <button onclick="showPage('aboutPage')">
+            About
+        </button>
+
+    </div>
+
+</nav>
 
 
-    <!-- TWO OPTIONS -->
 
-    <div class="options">
+<!-- ========================================= -->
+<!-- MAIN APPLICATION -->
+<!-- ========================================= -->
 
-        <!-- Journey Option -->
-        <div class="option-card">
+<main>
 
-            <h2>🛣️ Stations on My Journey</h2>
+
+<!-- =========================================
+     PAGE 1 : HOME
+     ========================================= -->
+
+<section id="homePage" class="app-page active-page">
+
+    <!-- HERO SECTION -->
+    <div class="hero-section">
+
+        <!-- LEFT CONTENT -->
+        <div class="hero-content">
+
+            <span class="hero-badge">
+                ⚡ SMART EV MOBILITY
+            </span>
+
+            <h1>
+                Find the Right Charging Station
+                <span>for Your Journey</span>
+            </h1>
 
             <p>
-                Find charging stations along your selected route.
+                AI-assisted EV charging station recommendation
+                based on route, battery feasibility, station
+                facilities and multiple charging factors.
             </p>
 
-            <button onclick="showJourneyForm()">
-                🛣️ Plan My Journey
-            </button>
+            <!-- BUTTONS -->
+            <div class="hero-buttons">
+
+                <button
+                    class="primary-btn"
+                    onclick="showPage('journeyPage')">
+                    🚗 Plan My Journey
+                    <span class="button-arrow">→</span>
+                </button>
+
+                <button
+                    class="secondary-btn"
+                    onclick="showPage('nearbyPage')">
+                    📍 Find Nearby Stations
+                    <span class="button-arrow">→</span>
+                </button>
+
+            </div>
+
+
+            <!-- STATS -->
+            <div class="hero-stats">
+
+                <div class="hero-stat">
+
+                    <div class="stat-icon">
+                        ⚡
+                    </div>
+
+                    <div class="stat-text">
+                        <strong>1000+</strong>
+                        <span>Charging Stations</span>
+                    </div>
+
+                </div>
+
+
+                <div class="hero-stat">
+
+                    <div class="stat-icon">
+                        🏙️
+                    </div>
+
+                    <div class="stat-text">
+                        <strong>50+</strong>
+                        <span>Cities Covered</span>
+                    </div>
+
+                </div>
+
+
+                <div class="hero-stat">
+
+                    <div class="stat-icon">
+                        🤖
+                    </div>
+
+                    <div class="stat-text">
+                        <strong>AI</strong>
+                        <span>Smart Recommendations</span>
+                    </div>
+
+                </div>
+
+
+                <div class="hero-stat">
+
+                    <div class="stat-icon">
+                        ☀️
+                    </div>
+
+                    <div class="stat-text">
+                        <strong>24/7</strong>
+                        <span>Always Available</span>
+                    </div>
+
+                </div>
+
+            </div>
 
         </div>
 
 
-        <!-- Nearby Option -->
-        <div class="option-card">
+        <!-- RIGHT IMAGE -->
+        <div class="hero-visual">
 
-            <h2>📍 Nearby Charging Stations</h2>
+            <img
+                src="image/ev-car-charging.png"
+                alt="Electric vehicle charging at a smart charging station"
+            >
 
-            <p>
-                Find EV charging stations near your current location.
-            </p>
+            <!-- READY TO CHARGE CARD -->
+            <div class="ready-card">
 
-            <button onclick="findNearbyStations()">
-                📍 Find Nearby Stations
-            </button>
+                <div class="ready-icon">
+                    🔋
+                </div>
+
+                <div class="ready-content">
+
+                    <h3>
+                        Ready to Charge?
+                    </h3>
+
+                    <p>
+                        Find the most suitable charging
+                        station on your route.
+                    </p>
+
+                </div>
+
+                <div class="battery-circle">
+
+                    <strong>
+                        85%
+                    </strong>
+
+                    <span>
+                        Current Battery
+                    </span>
+
+                </div>
+
+            </div>
 
         </div>
 
     </div>
 
 
-    <!-- JOURNEY FORM -->
+    <!-- =========================================
+         INTELLIGENT CHARGING ASSISTANCE
+         ========================================= -->
 
-    <div class="form" id="journeyForm">
+    <div class="features-section">
 
-        <h2>🛣️ Journey Details</h2>
+        <h2>
+            Intelligent Charging Assistance
+        </h2>
 
-        <label>From City</label>
-
-        <input
-            type="text"
-            id="from"
-            placeholder="Enter Source City (Example: Pune)"
-        >
-
-
-        <label>To City</label>
-
-        <input
-            type="text"
-            id="to"
-            placeholder="Enter Destination City (Example: Solapur)"
-        >
+        <p class="section-subtitle">
+            Make better charging decisions during your journey.
+        </p>
 
 
-        <label>Current Battery (%)</label>
-
-        <input
-            type="number"
-            id="battery"
-            placeholder="Example: 60"
-            min="1"
-            max="100"
-        >
+        <div class="feature-grid">
 
 
-        <label>Vehicle Range (KM)</label>
+            <!-- ROUTE AWARE -->
+            <div class="feature-card">
 
-        <input
-            type="number"
-            id="range"
-            placeholder="Example: 350"
-        >
+                <div class="feature-icon">
+                    🗺️
+                </div>
+
+                <h3>
+                    Route Aware
+                </h3>
+
+                <p>
+                    Find charging stations relevant to
+                    your selected journey.
+                </p>
+
+                <span class="feature-arrow">
+                    →
+                </span>
+
+            </div>
 
 
-        <button onclick="findRoute()">
-            🔍 Find Best Charging Station
+            <!-- BATTERY AWARE -->
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🔋
+                </div>
+
+                <h3>
+                    Battery Aware
+                </h3>
+
+                <p>
+                    Check whether charging stations are
+                    reachable with your available range.
+                </p>
+
+                <span class="feature-arrow">
+                    →
+                </span>
+
+            </div>
+
+
+            <!-- SMART RANKING -->
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    ⚡
+                </div>
+
+                <h3>
+                    Smart Ranking
+                </h3>
+
+                <p>
+                    Stations are ranked using multiple
+                    charging and user-oriented factors.
+                </p>
+
+                <span class="feature-arrow">
+                    →
+                </span>
+
+            </div>
+
+
+            <!-- EXPLAINABLE -->
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    ✨
+                </div>
+
+                <h3>
+                    Explainable
+                </h3>
+
+                <p>
+                    Understand why a particular station
+                    was recommended.
+                </p>
+
+                <span class="feature-arrow">
+                    →
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+    </section>
+
+<!-- ========================================= -->
+<!-- PAGE 2 : PLAN JOURNEY -->
+<!-- ========================================= -->
+
+<section id="journeyPage"
+         class="app-page">
+
+
+    <div class="page-heading">
+
+        <span>
+            🚗 PLAN YOUR JOURNEY
+        </span>
+
+        <h1>
+            Find Your Best Charging Station
+        </h1>
+
+        <p>
+            Enter your journey and vehicle details
+            to get a smart charging recommendation.
+        </p>
+
+    </div>
+
+
+
+    <div class="journey-layout">
+
+
+        <!-- FORM CARD -->
+
+        <div class="journey-card">
+
+            <h2>
+                Journey Details
+            </h2>
+
+            <p class="card-subtitle">
+                Tell us about your trip
+            </p>
+
+
+            <div class="input-group">
+
+                <label for="from">
+                    📍 From City
+                </label>
+
+                <input
+                    type="text"
+                    id="from"
+                    placeholder="Example: Pune">
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="to">
+                    🏁 To City
+                </label>
+
+                <input
+                    type="text"
+                    id="to"
+                    placeholder="Example: Mumbai">
+
+            </div>
+
+
+            <div class="input-row">
+
+                <div class="input-group">
+
+                    <label for="battery">
+                        🔋 Current Battery (%)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="battery"
+                        placeholder="Example: 60"
+                        min="1"
+                        max="100">
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="range">
+                        🚘 Vehicle Range (KM)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="range"
+                        placeholder="Example: 350">
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="primary-btn search-btn"
+                onclick="findRoute()">
+
+                ⚡ Find Best Charging Station
+
+            </button>
+
+
+            <p class="form-note">
+
+                Your recommendation considers route,
+                battery range, charging power, availability,
+                cost, waiting time, reviews and facilities.
+
+            </p>
+
+        </div>
+
+
+        <!-- INFO CARD -->
+
+        <div class="journey-info-card">
+
+            <div class="info-icon">
+                🧠
+            </div>
+
+            <h2>
+                Smart Recommendation
+            </h2>
+
+            <p>
+                Our system evaluates suitable charging
+                stations using multiple criteria to help
+                you choose a convenient station.
+            </p>
+
+
+            <div class="mini-feature">
+                <span>🔋</span>
+                Battery feasibility
+            </div>
+
+            <div class="mini-feature">
+                <span>🗺️</span>
+                Route relevance
+            </div>
+
+            <div class="mini-feature">
+                <span>⚡</span>
+                Charging performance
+            </div>
+
+            <div class="mini-feature">
+                <span>⭐</span>
+                Reviews & facilities
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ========================================= -->
+<!-- PAGE 3 : RESULTS + MAP -->
+<!-- ========================================= -->
+
+<section id="resultsPage"
+         class="app-page">
+
+
+    <div class="page-heading">
+
+        <span>
+            🗺️ JOURNEY RESULTS
+        </span>
+
+        <h1>
+            Your Route & Charging Stations
+        </h1>
+
+        <p>
+            Explore the route and available charging stations.
+        </p>
+
+    </div>
+
+
+
+    <!-- ROUTE SUMMARY -->
+
+    <div id="routeSummary"
+         class="route-summary">
+
+        <!-- JavaScript can populate this later -->
+
+    </div>
+
+
+
+    <!-- MAP -->
+
+    <div class="map-card">
+
+        <div class="map-header">
+
+            <div>
+
+                <h2>
+                    🗺️ Interactive Route Map
+                </h2>
+
+                <p>
+                    Charging stations along your journey
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div id="map"></div>
+
+    </div>
+
+
+
+    <!-- RECOMMENDATION -->
+
+    <div id="result"
+         class="recommendation-section">
+
+        <!-- JavaScript recommendation appears here -->
+
+    </div>
+
+</section>
+
+
+
+<!-- ========================================= -->
+<!-- PAGE 4 : NEARBY STATIONS -->
+<!-- ========================================= -->
+
+<section id="nearbyPage"
+         class="app-page">
+
+
+    <div class="page-heading">
+
+        <span>
+            📍 NEARBY CHARGING
+        </span>
+
+        <h1>
+            Charging Stations Near You
+        </h1>
+
+        <p>
+            Find nearby EV charging stations using your
+            current location.
+        </p>
+
+    </div>
+
+
+
+    <div class="nearby-intro-card">
+
+        <div>
+
+            <h2>
+                📍 Discover Nearby Stations
+            </h2>
+
+            <p>
+                Allow location access to find charging
+                stations closest to you.
+            </p>
+
+        </div>
+
+
+        <button
+            class="primary-btn"
+            onclick="findNearbyStations()">
+
+            📍 Find Nearby Stations
+
         </button>
 
     </div>
 
 
-    <!-- Recommendation Result -->
 
-    <div id="result"></div>
+    <!-- NEARBY RESULTS -->
 
+    <div id="nearbyResults"
+         class="nearby-grid">
 
-    <!-- Nearby Station Results -->
+        <!-- JavaScript nearby stations appear here -->
 
-    <div id="nearbyResults"></div>
+    </div>
 
-
-    <!-- Map -->
-
-    <div id="map"></div>
-
-</div>
+</section>
 
 
-<!-- Papa Parse -->
+
+<!-- ========================================= -->
+<!-- PAGE 5 : ABOUT -->
+<!-- ========================================= -->
+
+<section id="aboutPage"
+         class="app-page">
+
+
+    <div class="page-heading">
+
+        <span>
+            ℹ️ ABOUT THE SYSTEM
+        </span>
+
+        <h1>
+            How EV CHARGE AI Works
+        </h1>
+
+        <p>
+            A route-aware and battery-aware EV charging
+            station recommendation system.
+        </p>
+
+    </div>
+
+
+
+    <div class="workflow-card">
+
+        <div class="workflow-step">
+
+            <div class="workflow-number">
+                01
+            </div>
+
+            <h3>
+                User Input
+            </h3>
+
+            <p>
+                Source, destination, battery percentage
+                and vehicle range.
+            </p>
+
+        </div>
+
+
+        <div class="workflow-arrow">
+            →
+        </div>
+
+
+        <div class="workflow-step">
+
+            <div class="workflow-number">
+                02
+            </div>
+
+            <h3>
+                Route Generation
+            </h3>
+
+            <p>
+                Route and distance are obtained for
+                the selected journey.
+            </p>
+
+        </div>
+
+
+        <div class="workflow-arrow">
+            →
+        </div>
+
+
+        <div class="workflow-step">
+
+            <div class="workflow-number">
+                03
+            </div>
+
+            <h3>
+                Station Filtering
+            </h3>
+
+            <p>
+                Suitable and reachable stations
+                are identified.
+            </p>
+
+        </div>
+
+
+        <div class="workflow-arrow">
+            →
+        </div>
+
+
+        <div class="workflow-step">
+
+            <div class="workflow-number">
+                04
+            </div>
+
+            <h3>
+                Smart Ranking
+            </h3>
+
+            <p>
+                Stations are ranked using multiple
+                recommendation factors.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="technology-card">
+
+        <h2>
+            ⚙️ Technologies Used
+        </h2>
+
+        <div class="technology-list">
+
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+            <span>Leaflet.js</span>
+            <span>OpenStreetMap</span>
+            <span>OpenRouteService</span>
+            <span>CSV Dataset</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- ========================================= -->
+<!-- LIBRARIES -->
+<!-- ========================================= -->
 
 <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
@@ -147,5 +811,7 @@
 
 <script src="script.js"></script>
 
+
 </body>
+
 </html>
